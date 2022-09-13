@@ -1,5 +1,15 @@
 const monitor = document.querySelector(".monitor");
 let count = 0;
+let colors = [
+  "red",
+  "blue",
+  "green",
+  "yellow",
+  "purple",
+  "aqua",
+  "black",
+  "orange",
+];
 
 const btnDec = document.createElement("button");
 btnDec.innerHTML = "decrease";
@@ -16,10 +26,15 @@ btnInc.innerHTML = "Increase";
 document.getElementById("buttons").appendChild(btnInc);
 btnInc.setAttribute("id", "btnInc");
 
+function colorChange() {
+  document.querySelector("body").style.background =
+    colors[Math.floor(Math.random() * colors.length)];
+}
+
 btnDec.addEventListener("click", function () {
   count--;
   document.querySelector("#monitor").innerHTML = count;
-  document.querySelector("body").style.background = "red";
+  colorChange();
 });
 btnRes.addEventListener("click", function () {
   count = 0;
@@ -29,7 +44,7 @@ btnRes.addEventListener("click", function () {
 btnInc.addEventListener("click", function () {
   count++;
   document.querySelector("#monitor").innerHTML = count;
-  document.querySelector("body").style.background = "green";
+  colorChange();
 });
 
 // let colors = ["red", "blue", "yellow", "green", "grey"];
@@ -42,7 +57,7 @@ btnInc.addEventListener("click", function () {
 //   btn.addEventListener("click", function (e) {
 //     const styles = e.currentTarget.classList;
 //     document.querySelector("body").style.background = // bu işlemi dışarıda yapıp burada nasıl tanımlardık ?
-//       colors[Math.floor(Math.random() * colors.length)];
+//
 //     if (styles.contains("increase")) {
 //       count++;
 //     } else if (styles.contains("decrease")) {
